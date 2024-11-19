@@ -50,3 +50,4 @@ SELECT
     Year,
     CourseName
 FROM unnormalized_form;
+
