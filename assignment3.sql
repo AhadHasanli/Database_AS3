@@ -129,3 +129,28 @@ CREATE TABLE books_ThirdNF (
 INSERT INTO books_ThirdNF (ISBN, Title, Edition, Publisher, Pages, Year)
 SELECT DISTINCT ISBN, Title, Edition, Publisher, Pages, Year
 FROM books;
+
+-- Step 6: To verify if the code is working properly or not. I joined all tables which are in 3NF and see if it is the same with the table that is in 1NF.
+SELECT 
+    course_details.CRN,
+    books_thirdnf.ISBN,
+    books_thirdnf.Title,
+    author_details.Author,
+    books_thirdnf.Edition,
+    books_thirdnf.Publisher,
+    publishers.PublisherAddress,
+    books_thirdnf.Pages,
+    books_thirdnf.Year,
+    course_details.CourseName
+FROM 
+    course_details
+JOIN 
+    coursebook ON course_details.CRN = coursebook.CRN
+JOIN 
+    books_thirdnf ON coursebook.ISBN = books_thirdnf.ISBN
+JOIN 
+    author_details ON books_thirdnf.ISBN = author_details.ISBN
+JOIN 
+    publishers ON books_thirdnf.Publisher = publishers.Publisher
+ORDER BY 
+    course_details.CRN, books_thirdnf.ISBN, author_details.Author;
