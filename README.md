@@ -67,9 +67,7 @@ After completing the normalization steps, the database schema was composed of th
 - **`publishers`**
 - **`author_details`**
 - **`course_details`**
-- **`books`**
 - **`coursebook`**
-- **`books_ThirdNF`**
 
 ---
 
